@@ -44,7 +44,7 @@ const config = {
   port: 4000,
 };
 
-module.export = config;
+module.exports = config;
 ```
 
 ## Usage
