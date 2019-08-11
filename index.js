@@ -28,7 +28,7 @@ app.use('/api/v1/mail', require('./mail'));
 
 // handle uncaught errors
 app.use((err, req, res, next) => {
-  res.status(err.status || 500).send({ status: 'Error', error: err.message });
+  res.status(err.status || 500).send({ status: 'Error', message: err.message || "Unknown error" });
 });
 
 // handle missing routes with 404

@@ -13,7 +13,7 @@ We need to create a `config.js` file in the root of the project. There is a `con
 `config.js` should export an object with the following keys:
 
 - `transport`: Nodemailer transport configuration, configure with your SMTP details. Any valid Nodemailer transport can be used.
-- `from`: messages sent from this app will have this `From:` field.
+- `from`: messages sent from this app will have this `From:` field
 - `to`: recipient of message sent by this app
 - `subject`: subject line of message which will be sent
 - `port`: listening port of server. If not defined, it will use `process.env.PORT || 4000`
@@ -59,9 +59,9 @@ module.exports = config;
 
 The default port is `4000`, but you can change this in `config.port`.
 
-On production systems, I'd recommend using a process manager such as [PM2](http://pm2.keymetrics.io/)
+On production systems, I'd recommend using a process manager such as [PM2](http://pm2.keymetrics.io/).
 
-Example with `pm2`
+Example with `pm2`:
 
 ```bash
 # add app and start
@@ -80,9 +80,9 @@ Send a `POST` request to your node app with the request string `/api/v1/mail`. I
 
 The request body is JSON encoded `application/json`.
 
-It must contain the `message` field. All other fields are optional, however it is recommended to have at least a `from` and `name`
+It must contain the `message` field. All other fields are optional, however it is recommended to have at least a `from` and `name`.
 
-Example JSON payload
+Example JSON payload:
 
 ```json
 {
@@ -94,7 +94,7 @@ Example JSON payload
 
 ### Response
 
-The server should respond normally with status code `200`
+The server should respond normally with status code `200`.
 
 ```json
 {
@@ -102,32 +102,33 @@ The server should respond normally with status code `200`
 }
 ```
 
-If there is an error, as an example of invalid JSON in the request body, status code is `err.status` or `500`
+If there is an error, as an example of invalid JSON in the request body, status code is `err.status` or `500`.
 
 ```json
 {
     "status": "Error",
-    "error": "Unexpected token f in JSON at position 3"
+    "message": "Unexpected token f in JSON at position 3"
 }
 ```
 
-And if you hit a route that does not exist, status code `404`
+And if you hit a route that does not exist, status code `404`.
 
 ```json
 {
-    "status": "NotFound"
+    "status": "Error",
+    "message": "NotFound"
 }
 ```
 
 ### Alternative request payloads
 
-It will also correctly handle the following encoding schemes
+It will also correctly handle the following encoding schemes:
 
 - `application/x-www-form-urlencoded`
 
 ## Email message body
 
-If successful, you recpient should receive an email message with the parameters in `config.js` with the message body in the format
+If successful, you recpient should receive an email message with the parameters in `config.js` with the message body in the format:
 
 ```txt
 key1: value1
@@ -140,7 +141,7 @@ The key and value pairs can be anything that is submitted as part of the request
 
 ## NGINX reverse proxy
 
-Example of a location block which configures a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) on all requests to `/api`
+Example of a location block which configures a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) on all requests to `/api`:
 
 ```txt
 location /api {
