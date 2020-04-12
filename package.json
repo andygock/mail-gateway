@@ -11,6 +11,9 @@
     "nodemailer": "^6.4.6"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.1.1",
     "nodemon": "^2.0.3"
   },
   "author": "",
@@ -18,6 +21,6 @@
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./index",
     "debug": "./node_modules/.bin/nodemon --inspect ./index",
-    "test": "mocha --timeout 2000 -b test/test"
+    "test": "./node_modules/.bin/mocha --exit --timeout 2000 -b test/test"
   }
 }
