@@ -29,6 +29,13 @@ const config = {
   // rate limiting
   rateLimitWindowMs: 15 * 60 * 1000, // 15 minutes
   rateLimitWindowMax: 30, // 30 requests per 15 minutes
+
+  // optional API key
+  key: 'SuperSecretKey',
+
+  // enable console logging - not need if you're using a reverse proxy
+  // logging always enabled if process.env.NODE_ENV === 'development'
+  logging: true,
 };
 
 module.exports = config;
