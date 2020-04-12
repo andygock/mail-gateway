@@ -25,6 +25,10 @@ const config = {
 
   // server listening port
   port: 4000,
+
+  // rate limiting
+  rateLimitWindowMs: 15 * 60 * 1000, // 15 minutes
+  rateLimitWindowMax: 30, // 30 requests per 15 minutes
 };
 
 module.exports = config;
