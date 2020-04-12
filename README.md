@@ -53,11 +53,17 @@ module.exports = config;
 
     npm install
 
+For production environments
+
+    npm install --production
+
 ### Start server
 
     npm run start
 
 The default port is `4000`, but you can change this in `config.port`.
+
+### Using `pm2`
 
 On production systems, I'd recommend using a process manager such as [PM2](http://pm2.keymetrics.io/).
 
@@ -72,7 +78,12 @@ pm2 stop mail-gateway
 
 # restart app
 pm2 restart mail-gateway
+
+# remove app
+pm2 uninstall mail-gateway
 ```
+
+It's recommended to set the pm2 module to [automatically run at startup with a script](https://pm2.keymetrics.io/docs/usage/startup/).
 
 ### Request
 
@@ -80,17 +91,34 @@ Send a `POST` request to your node app with the request string `/api/v1/mail`. I
 
 The request body is JSON encoded `application/json`.
 
-It must contain the `message` field. All other fields are optional, however it is recommended to have at least a `from` and `name`.
+It must contain the `email` and `message` fields.
 
 Example JSON payload:
 
 ```json
 {
-    "from": "user.submitted@theirdomain.com",
-    "name": "User's name",
-    "message": "This is the message\nNext line"
+    "email": "user@sender.com",
+    "message": "This is the message\nNext line",
+    "subject": "Message subject",
+    "param1": "value1",
+    "param2": 2,
 }
 ```
+
+All other fields are optional, and they will part of the sent message. For the example payload above, the message body sent will be:
+
+```txt
+email: user@sender.com
+subject: Message subject
+param1: value1
+param2: 2
+
+message:
+This is a test message
+Next line
+```
+
+The address in `email` field will be used in the `Reply-To` header of the message.
 
 ### Response
 

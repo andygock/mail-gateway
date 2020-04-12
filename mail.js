@@ -7,6 +7,7 @@ const config = require('./config');
 // check email address is valid
 // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 const validateEmail = (email) => {
+  /* eslint-disable-next-line no-useless-escape */
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
@@ -51,15 +52,16 @@ router.post('/', async (req, res, next) => {
       return;
     }
 
-    // prepare messageParams string, we isnert this at top of message body
+    // prepare messageParams string, we insert this at top of message body
     const messageParams = Object.keys(req.body)
       .filter((k) => k !== 'message')
       .map((key) => `${key}: ${req.body[key]}`);
 
     // add message body
+    messageParams.push(''); // empty line before message body
     messageParams.push(`message:\n${req.body.message || 'Message is missing'}`);
 
-    if (!!config.debugPayload) {
+    if (config.debugPayload) {
       // bypass actual message sending, for debugging payload only
       console.log(messageParams.join('\n'));
       res.status(200).send({ status: 'OK' });

@@ -19,6 +19,8 @@ const config = {
   // this is how a message will be prepared when it is sent to you
   from: '"Nodemailer" <me@mydomain.com>',
   to: 'me@mydomain.com',
+
+  // This can be overwritten in payload
   subject: 'Contact form message',
 
   // server listening port
