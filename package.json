@@ -1,8 +1,8 @@
 {
-  "name": "nodemailer",
+  "name": "mail-gateway",
   "version": "1.0.0",
-  "description": "",
-  "main": "nodemailer.js",
+  "description": "A very simple Express server for sending email messages using Nodemailer. It has a basic REST API with a single route.",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
     "nodemailer": "^6.4.2",
@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "start": "nodemon ./app",
     "debug": "nodemon --inspect ./app",
