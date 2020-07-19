@@ -20,8 +20,8 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon ./index",
-    "debug": "./node_modules/.bin/nodemon --inspect ./index",
-    "test": "./node_modules/.bin/mocha --exit --timeout 2000 -b test/test"
+    "start": "nodemon ./index",
+    "debug": "nodemon --inspect ./index",
+    "test": "mocha --exit --timeout 2000 -b test/test"
   }
 }
