@@ -3,6 +3,9 @@
 // do not commit private information of config.js to Git!
 //
 const config = {
+  // server listening port
+  port: 4000,
+
   // nodemailer transport config
   // https://nodemailer.com/smtp/
   transport: {
@@ -23,15 +26,12 @@ const config = {
   // This can be overwritten in payload
   subject: 'Contact form message',
 
-  // server listening port
-  port: 4000,
-
   // rate limiting
   rateLimitWindowMs: 15 * 60 * 1000, // 15 minutes
   rateLimitWindowMax: 30, // 30 requests per 15 minutes
 
   // optional API key
-  key: 'SuperSecretKey',
+  // key: 'SuperSecretKey',
 
   // enable console logging - not need if you're using a reverse proxy
   // logging always enabled if process.env.NODE_ENV === 'development'
