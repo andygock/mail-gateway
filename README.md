@@ -101,7 +101,7 @@ Example JSON payload:
     "message": "This is the message\nNext line",
     "subject": "Message subject",
     "param1": "value1",
-    "param2": 2,
+    "param2": 2
 }
 ```
 
