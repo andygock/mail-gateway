@@ -15,7 +15,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "mocha": "^9.2.2",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.20"
   },
   "author": "",
   "license": "MIT",
